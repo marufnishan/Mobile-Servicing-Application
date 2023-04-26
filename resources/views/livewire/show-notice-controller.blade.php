@@ -15,23 +15,23 @@
     </head>
 
     <body>
-        @if ($message = Session::get('message'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{ $message }}</strong>
-            <button type="button" class="btn-close pe-5" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{ $message }}</strong>
-            <button type="button" class="btn-close pe-5" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
+                
         <div class="container p-5">
             <div class="panel md-whiteframe-2dp">
                 <div class="panel-body">
                     <div class="table-responsive">
+                        @if ($message = Session::get('message'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ $message }}</strong>
+                            <button type="button" class="btn-close pe-5" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
+                        @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{ $message }}</strong>
+                            <button type="button" class="btn-close pe-5" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
                         <table class="table table-striped table-panel-success">
                             <thead>
                                 <div class="d-flex">
@@ -50,6 +50,7 @@
                                     <th>Description</th>
                                     <th>Upload Date</th>
                                     <th>Download Notice</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,6 +61,10 @@
                                     <td>{{$notice->description}}</td>
                                     <td>{{$notice->created_at}}</td>
                                     <td><button class="btn btn-success m-2" wire:click="download({{ $notice->id }})">Download PDF</button></td>
+                                    <td ><a href="{{route('editnotice',['notice_id'=>$notice->id])}}"><button class="btn btn-secondary m-2">Edit</button></a></td>
+                                    <td><button
+                                        class="btn btn-danger m-2"
+                                        wire:click="delete({{ $notice->id }})">Delete</button></td>
                                 </tr>
                                 @endforeach
                             </tbody>

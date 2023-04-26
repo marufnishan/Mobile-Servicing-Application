@@ -4,6 +4,7 @@
 
 use App\Http\Controllers\PdfController;
 use App\Http\Livewire\NoticeboardController;
+use App\Http\Livewire\NoticeBoardEditComponent;
 use App\Http\Livewire\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,4 +43,5 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
     Route::get('/generate-invoice/{user_id}', [PdfController::class, 'invoice'])->name('getinvoice');
     Route::get('/notice', App\Http\Livewire\NoticeboardController::class)->name('notice');
     Route::post('/addnotice', [NoticeboardController::class, 'store'])->name('addnotice');
+    Route::get('/notice/{notice_id}', App\Http\Livewire\NoticeBoardEditComponent::class)->name('editnotice');
 });

@@ -34,7 +34,7 @@ class NoticeboardController extends Component
             return back()->with('message','Notice created successfully!');
     }
 
-
+    
     public function render()
     {
         return view('livewire.noticeboard-controller');
