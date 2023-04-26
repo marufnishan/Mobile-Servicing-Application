@@ -66,6 +66,7 @@
                 <th>Problem</th>
                 <th>Phone Number</th>
                 <th>Imei Number</th>                               
+                <th>Phone Model</th>                               
                 <th>Service Charge</th>
                 <th>Image</th>
                 <th>Order Date</th>
@@ -78,9 +79,14 @@
                 <td>{{$user->customer_name}}</td>
                 <td>{{$user->problem}}</td>
                 <td>{{$user->phone}}</td>
+                <td>{{$user->phone_model}}</td>
                 <td>{{$user->imei}}</td>
                 <td>{{$user->service_charge}} Tk</td>
+                @if($user->image)
                 <td><img src="{{public_path('img')}}/{{$user->image}}"/></td>
+                @else
+                <td>Image Not Found</td>
+                @endif
                 <td>{{$user->created_at}}</td>
             </tr>
             @endforeach

@@ -25,5 +25,6 @@ class Userinfo extends Model
         'parentphone',
         'emailfb',
         'picture',
+        'phone_model'
     ];
 }

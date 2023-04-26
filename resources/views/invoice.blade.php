@@ -31,6 +31,7 @@
 <body>
     <h1 style="text-align: center">Noborupa Telecom and Service Point</h1>
     <h1>Invoice</h1>
+    <h3>Phone Model : {{$user->phone_model}}</h3>
     <p>Order Date : {{$user->created_at}}</p>
     <hr>
     <table>

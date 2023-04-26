@@ -45,6 +45,11 @@
                         </div>
     
                         <div>
+                            <x-jet-label for="phone_model" class="block mt-2 w-full" value="{{ __('Phone Model') }}" />
+                            <x-jet-input id="phone_model" class="block mt-1 w-full" type="text" name="phone_model" :value="old('phone_model')" required autofocus autocomplete="phone_model" wire:model="phone_model" />
+                        </div>
+
+                        <div>
                             <x-jet-label for="imei" class="block mt-2 w-full" value="{{ __('Imei Number') }}" />
                             <x-jet-input id="imei" class="block mt-1 w-full" type="text" name="imei" :value="old('imei')" required autofocus autocomplete="imei" wire:model="imei" />
                         </div>

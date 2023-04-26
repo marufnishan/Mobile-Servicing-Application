@@ -33,6 +33,7 @@ class UserController extends Component
             'problem' => 'required',
             'phone' => 'required',
             'imei' => 'required',
+            'phone_model' => 'required',
             'service_charge' => 'required'
         ])->validate();
         
@@ -49,6 +50,7 @@ class UserController extends Component
         $user->problem = $request->problem;
         $user->phone = $request->phone;
         $user->imei = $request->imei;
+        $user->phone_model = $request->phone_model;
         $user->service_charge = $request->service_charge;
         $user->image = $imageName;
         $user->save();

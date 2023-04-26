@@ -61,6 +61,7 @@
                                 <tr>
                                     <th>Order Id</th>
                                     <th>Customer Name</th>
+                                    <th>Phone Model</th>
                                     <th>Problem</th>
                                     <th>Phone Number</th>
                                     <th>Imei Number</th>
@@ -76,6 +77,7 @@
                                 <tr ng-repeat="education in educationList" class="ng-scope" style="">
                                     <td>#{{$user->id}}</td>
                                     <td>{{$user->customer_name}}</td>
+                                    <td>{{$user->phone_model}}</td>
                                     <td>{{$user->problem}}</td>
                                     <td>{{$user->phone}}</td>
                                     <td>{{$user->imei}}</td>
