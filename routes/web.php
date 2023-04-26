@@ -39,6 +39,7 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
     Route::put('/update', App\Http\Livewire\UserEditController::class)->name('update');
     Route::get('/all_users' , App\Http\Livewire\UserController::class)->name('allusers');
     Route::get('/generate-pdf', [PdfController::class, 'generatePDF'])->name('getpdf');
+    Route::get('/generate-invoice/{user_id}', [PdfController::class, 'invoice'])->name('getinvoice');
     Route::get('/notice', App\Http\Livewire\NoticeboardController::class)->name('notice');
     Route::post('/addnotice', [NoticeboardController::class, 'store'])->name('addnotice');
 });

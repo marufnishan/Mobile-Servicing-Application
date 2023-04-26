@@ -79,7 +79,7 @@ return array (
     'normal' => $rootDir . '/lib/fonts/DejaVuSerif',
   ),
   'nikosh' => array(
-    'normal' => $fontDir . '/nikosh_normal_ace69abb1ffc2b7f6cab6eb2cd9b2e0e',
+    'normal' => $fontDir . '/nikosh_normal_21f85e15371c9f0db05c3a2aa4cae2e9',
   ),
 );
 }; ?>

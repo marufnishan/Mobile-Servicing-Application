@@ -33,7 +33,7 @@
         @endif
 
         
-        <div class="container p-5">
+        <div class="container-fluid p-5">
             <div class="panel md-whiteframe-2dp">
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -50,39 +50,43 @@
                                         style="border-radius: 5px" wire:model="searchUser">
                                     <Select class="me-3 mb-3" style="border-radius: 5px" wire:model="filter">
                                         <option value="">Per Page</option>
-                                        <option value="5">5 Per Page</option>
                                         <option value="10">10 Per Page</option>
-                                        <option value="15">15 Per Page</option>
+                                        <option value="20">20 Per Page</option>
+                                        <option value="50">50 Per Page</option>
+                                        <option value="100">100 Per Page</option>
                                     </Select>
                                     <a href="{{ route('getpdf') }}"><button class="btn btn-danger">PDF</button></a>
                                     
                                 </div>
                                 <tr>
-                                    <th>No.</th>
+                                    <th>Order Id</th>
                                     <th>Customer Name</th>
                                     <th>Problem</th>
                                     <th>Phone Number</th>
                                     <th>Imei Number</th>
-                                    <th>Image</th>                                    
+                                    <th style="width:200px">Image</th>                                    
                                     <th>Service Charge</th>
+                                    <th>Order Date</th>
                                     <th colspan="2" class="text-center">Action</th>
+                                    <th>Invoice</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($allusers as $user)
                                 <tr ng-repeat="education in educationList" class="ng-scope" style="">
-                                    <td>{{$user->id}}</td>
+                                    <td>#{{$user->id}}</td>
                                     <td>{{$user->customer_name}}</td>
                                     <td>{{$user->problem}}</td>
                                     <td>{{$user->phone}}</td>
                                     <td>{{$user->imei}}</td>
-                                    <td><img src="{{asset('img')}}/{{$user->image}}" style="width: 100px !important;
-                                        height: 100px !important;"/></td>
-                                    <td>{{$user->service_charge}}</td>
+                                    <td><img src="{{asset('img')}}/{{$user->image}}" style="width: 200px !important;"/></td>
+                                    <td>{{$user->service_charge}} Tk</td>
+                                    <td>{{$user->created_at}}</td>
                                     <td ><a href="{{route('edit',['user_id'=>$user->id])}}"><button class="btn btn-secondary m-2">Edit</button></a></td>
                                             <td><button
                                                 class="btn btn-danger m-2"
-                                                wire:click="delete({{ $user->id }})">Delete</button></td>                                    
+                                                wire:click="delete({{ $user->id }})">Delete</button></td>      
+                                    <td> <a href="{{route('getinvoice', $user->id)}}"><button class="btn btn-success m-2">Print</button></a></td>                              
                                 </tr>
                                 @endforeach
                             </tbody>

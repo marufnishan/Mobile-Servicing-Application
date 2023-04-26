@@ -7,62 +7,81 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Users</title>
     <style>
-        @font-face {
-            font-family: 'Nikosh';
-            src: url({{ storage_path('fonts\Nikosh.ttf') }}) format("truetype");
-			font-style: normal;
-            font-variant: normal;
-        }
-        #usr{
-            font-family: sans-serif,'Nikosh';
-            font-size: 12px;
-            border-collapse: collapse;
-            width: 100%
-        }
-        #usr td,#usr th{
-            font-family: 'Nikosh';
-            border: 1px solid #ddd;
-            padding: 2px;
-            text: center;
-        }
-        #usr tr:nth-child(even){
-            background-color: #0bfdfd;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        body {
+        margin: 20px;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+    }
 
-        #usr th{
-            text-align: left;
-            background-color: rgb(20, 17, 17);
-            color: bisque;
-        }
+    h1 {
+        text-align: center;
+        color: #697eb8;
+    }
 
-        body{
-            font-family: 'Nikosh';
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        box-shadow: 0 2px 4px rgba(0,0,0,.3);
+        overflow-x: auto;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 10px 8px;
+        font-weight: 500;
+        font-size: 10px;
+        color: #424242;
+    }
+
+    th {
+        background-color: #697eb8;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #eee;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        box-shadow: 0 2px 4px rgba(0,0,0,.3);
+    }
+</style>
 </head>
 <body>
-    <table id="usr">
+    <h1>Noborupa Telecom and Service Point</h1>
+    <table>
         <thead>
             <tr>
-                <th>No.</th>
+                <th>Order Id</th>
                 <th>Customer Name</th>
                 <th>Problem</th>
                 <th>Phone Number</th>
                 <th>Imei Number</th>                               
                 <th>Service Charge</th>
+                <th>Image</th>
+                <th>Order Date</th>
             </tr>
         </thead>
         <tbody>
             @foreach($allusers as $index=>$user)
             <tr>
-                <td>{{$user->id}}</td>
+                <td>#{{$user->id}}</td>
                 <td>{{$user->customer_name}}</td>
                 <td>{{$user->problem}}</td>
                 <td>{{$user->phone}}</td>
                 <td>{{$user->imei}}</td>
-                <td>{{$user->service_charge}}</td>
+                <td>{{$user->service_charge}} Tk</td>
+                <td><img src="{{public_path('img')}}/{{$user->image}}"/></td>
+                <td>{{$user->created_at}}</td>
             </tr>
             @endforeach
         </tbody>

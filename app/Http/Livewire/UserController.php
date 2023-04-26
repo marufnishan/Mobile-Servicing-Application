@@ -16,7 +16,7 @@ class UserController extends Component
     use WithPagination;
     use WithFileUploads;
     public $searchUser;
-    public $filter =2;
+    public $filter =20;
 
     public $customer_name;
     public $problem;
@@ -58,6 +58,7 @@ class UserController extends Component
         Userinfo::find($id)->delete();
         return back()->with('message', 'Order Deleted Successfully!');
     }
+    
 
     public function render()
     {
