@@ -50,7 +50,9 @@
                                     <th>Description</th>
                                     <th>Upload Date</th>
                                     <th>Download Notice</th>
+                                    @if(Auth::user()->utype == "Admin")
                                     <th colspan="2">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,10 +63,12 @@
                                     <td>{{$notice->description}}</td>
                                     <td>{{$notice->created_at}}</td>
                                     <td><button class="btn btn-success m-2" wire:click="download({{ $notice->id }})">Download PDF</button></td>
+                                    @if(Auth::user()->utype == "Admin")
                                     <td ><a href="{{route('editnotice',['notice_id'=>$notice->id])}}"><button class="btn btn-secondary m-2">Edit</button></a></td>
                                     <td><button
                                         class="btn btn-danger m-2"
                                         wire:click="delete({{ $notice->id }})">Delete</button></td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

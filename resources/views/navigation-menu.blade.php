@@ -1,4 +1,12 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+    <style>
+        @media (max-width: 767px) {
+  .mobile-nav-links {
+    display: block !important;
+  }
+}
+
+    </style>
     <!-- Primary Navigation Menu -->
     <div class="max-w-8xl mx-auto px-9 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -157,7 +165,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" style="text-decoration: none">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
         </div>
@@ -181,9 +189,29 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
-                    :active="request()->routeIs('profile.show')">
+                    :active="request()->routeIs('profile.show')" style="text-decoration: none">
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
+                
+                <div class="mobile-nav-links hidden md:hidden">
+                    <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" style="text-decoration: none">
+                      {{ __('Add Order') }}
+                    </x-jet-responsive-nav-link>
+                    <x-jet-responsive-nav-link href="{{ route('allnotice') }}" :active="request()->routeIs('allnotice')" style="text-decoration: none">
+                      {{ __('Our Services') }}
+                    </x-jet-responsive-nav-link>
+                    <x-jet-responsive-nav-link href="{{ route('notice') }}" :active="request()->routeIs('notice')" style="text-decoration: none">
+                      @if(Auth::user()->utype === 'Admin')
+                      {{ __('Add New Service') }}
+                      @endif
+                    </x-jet-responsive-nav-link>
+                    <x-jet-responsive-nav-link href="{{ route('allusers') }}" :active="request()->routeIs('allusers')" style="text-decoration: none">
+                      @if(Auth::user()->utype === 'Admin')
+                      {{ __('All Orders') }}
+                      @endif
+                    </x-jet-responsive-nav-link>
+                  </div>
+                  
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                 <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}"
@@ -196,7 +224,7 @@
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
 
-                    <x-jet-responsive-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                    <x-jet-responsive-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();" style="text-decoration: none">
                         {{ __('Log Out') }}
                     </x-jet-responsive-nav-link>
                 </form>

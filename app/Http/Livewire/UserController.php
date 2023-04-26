@@ -35,6 +35,8 @@ class UserController extends Component
             'imei' => 'required',
             'service_charge' => 'required'
         ])->validate();
+        
+        $imageName = null;
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $imageName = Carbon::now()->timestamp . '.' . $request->image->extension();
